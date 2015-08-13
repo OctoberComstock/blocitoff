@@ -46,6 +46,8 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 #Seeding gem
 gem 'faker'
 
+gem 'pundit'
+
 #Figaro protects my sensitive data
 gem 'figaro', '1.0'
 
