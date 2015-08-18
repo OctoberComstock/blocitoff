@@ -3,7 +3,7 @@
 
  require 'faker'
 
- # Create Users
+ Create Users
  5.times do
    user = User.new(
      name:     Faker::Name.name,
@@ -46,8 +46,13 @@
  member.skip_confirmation!
  member.save!
 
- 
- 
+ #Create an Item
+ 100.times do
+   Item.create!(
+     name:         Faker::Lorem.sentence,
+   )
+ end
+ items = Item.all
 #  user = User.first
 #  user.skip_reconfirmation!
 #  user.update_attributes!(
@@ -57,6 +62,7 @@
 
  puts "Seed finished"
  puts "#{User.count} users created"
+ puts "#{Item.count} items created"
  
  # Note: by calling `User.new` instead of `create`,
  # we create an instance of User which isn't immediately saved to the database.
