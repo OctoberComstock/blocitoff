@@ -34,11 +34,13 @@ class ItemsController < ApplicationController
   end
   
   def update
-   if @item.update(item_params)
-      redirect_to item_path(@item)
-   else
-    render 'edit'
-   end
+    if @item.update_attributes(item_params)
+      flash[:notice] = "Item was updated."
+       redirect_to item_path
+    else
+       flash[:error] = "There was an error saving the item. Please try again."
+       render 'edit'
+    end
   end
   
   def destroy

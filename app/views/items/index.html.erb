@@ -5,10 +5,12 @@
     <h2><%= link_to item.name, item, class: 'a' %></h2>
         <%= item.description %>
         
-        <span class="label label-default"><%= item.days_left %></span>
+        <div class="form-group">
+        <span class="label label-primary"><%= item.days_left %></span>
         
         <%= link_to "", completed_item_path(item), method: :patch, class: 'glyphicon glyphicon-ok' %>
         <%= link_to "", item, method: :delete, class: 'glyphicon glyphicon-remove-circle' %>
+        
       
 <% end %>
 
