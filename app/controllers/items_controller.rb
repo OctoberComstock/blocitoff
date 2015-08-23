@@ -2,16 +2,20 @@ class ItemsController < ApplicationController
   before_action :find_item, only: [:show, :edit, :update, :destroy]
   
   def index
-    @items = Item.all.order("created_at DESC")
+    if user_signed_in?  
+    @items = Item.where(:user_id => current_user).order("created_at DESC")
+    end
   end
+  
 
   def new
-    @item = Item.new
+    @item = current_user.items.build
     # authorize @item
   end
   
   def create
-    @item = Item.new(item_params)
+    @item = current_user.items.build(item_params)
+    @item.expires_at = Time.now + 7.days
     # authorize @item
      if @item.save
       redirect_to @item, notice: "Item was added!"
@@ -38,6 +42,12 @@ class ItemsController < ApplicationController
   def destroy
     @item.destroy
     redirect_to root_path
+  end
+  
+  def completed
+    @item = Item.find(params[:id])
+    @item.update_attribute(:completed, true)
+    redirect_to items_path
   end
   
   private

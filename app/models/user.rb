@@ -6,7 +6,6 @@ class User < ActiveRecord::Base
          :trackable, :validatable, 
          :confirmable
          
-  has_many :lists, dependent: :destroy   
   has_many :items, dependent: :destroy
          
  def admin?

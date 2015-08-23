@@ -3,7 +3,7 @@
 
  require 'faker'
 
- Create Users
+ #Create Users
  5.times do
    user = User.new(
      name:     Faker::Name.name,
@@ -47,9 +47,10 @@
  member.save!
 
  #Create an Item
- 100.times do
+ 50.times do
    Item.create!(
-     name:         Faker::Lorem.sentence,
+     name:   Faker::Lorem.sentence,
+     user:   users.sample
    )
  end
  items = Item.all

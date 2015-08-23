@@ -5,11 +5,15 @@ Rails.application.routes.draw do
   
   root to: 'welcome#index'
   
+  get "users/dashboard" => "items#index"
 
   devise_for :users
   resources :users, only: [:update, :show, :index]
-  resources :lists, only: [:create, :show, :index, :update]
-  resources :items
+  resources :items do
+    member do
+      patch :completed
+    end
+  end
   
   
 
