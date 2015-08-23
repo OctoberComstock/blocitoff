@@ -50,7 +50,9 @@
  50.times do
    Item.create!(
      name:   Faker::Lorem.sentence,
-     user:   users.sample
+     user:   users.sample,
+     created_at: Faker::Time.between(2.days.ago, Time.now, :all),
+     expires_at: Faker::Time.forward(10, :morning)
    )
  end
  items = Item.all

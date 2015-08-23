@@ -1,6 +1,6 @@
 <h1><%= @item.name %></h1>
+ <p><%= @item.description %></p>
  
- <%= render partial: 'items/item', collection: @items %>
- 
- <%= link_to "Back", root_path %>
+ <%= @item.days_left %>
+ <%= link_to "Back", items_path %>
  <%= link_to "Edit", edit_item_path(@item) %>

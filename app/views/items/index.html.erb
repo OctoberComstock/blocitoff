@@ -1,13 +1,15 @@
-<h1><b><%= link_to "+ New Item", new_item_path %></b></h1>
+<h1><b><%= link_to "", new_item_path, class: 'glyphicon glyphicon-plus' %></b></h1>
   
      <% @items.each do |item| %>
     
-    <h2><%= link_to item.name, item %></h2>
+    <h2><%= link_to item.name, item, class: 'a' %></h2>
+        <%= item.description %>
+        
+        <span class="label label-default"><%= item.days_left %></span>
+        
+        <%= link_to "", completed_item_path(item), method: :patch, class: 'glyphicon glyphicon-ok' %>
+        <%= link_to "", item, method: :delete, class: 'glyphicon glyphicon-remove-circle' %>
       
-      <p><%= link_to "Mark as Complete", completed_item_path(item), method: :patch %></p>
-      <p><%= link_to "Delete", item, method: :delete, class: 'glyphicon glyphicon-ok' %></p>
-      
-    
 <% end %>
 
 

@@ -3,9 +3,11 @@ Rails.application.routes.draw do
 
   get 'about' => 'welcome#about'
   
+  get "users/dashboard" => "items#index"
+  
   root to: 'welcome#index'
   
-  get "users/dashboard" => "items#index"
+
 
   devise_for :users
   resources :users, only: [:update, :show, :index]

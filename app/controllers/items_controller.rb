@@ -2,9 +2,8 @@ class ItemsController < ApplicationController
   before_action :find_item, only: [:show, :edit, :update, :destroy]
   
   def index
-    if user_signed_in?  
-    @items = Item.where(:user_id => current_user).order("created_at DESC")
-    end
+    @items = Item.all
+    @items = Item.where(:user_id => current_user).order("expires_at DESC")
   end
   
 
@@ -26,9 +25,12 @@ class ItemsController < ApplicationController
   end
   
   def show
+    @item = Item.find(params[:id])
+    @item.days_left 
   end
 
   def edit
+    @item = Item.find(params[:id])
   end
   
   def update
@@ -41,7 +43,7 @@ class ItemsController < ApplicationController
   
   def destroy
     @item.destroy
-    redirect_to root_path
+    redirect_to items_path
   end
   
   def completed
