@@ -3,12 +3,12 @@ class ItemsController < ApplicationController
   
   def index
     @items = Item.all
-    @items = Item.where(:user_id => current_user).order("expires_at DESC")
+    @items = Item.where(user: current_user)
   end
   
 
   def new
-    @item = current_user.items.build
+    @item = Item.new
     # authorize @item
   end
   
@@ -28,12 +28,26 @@ class ItemsController < ApplicationController
     @item = Item.find(params[:id])
     @item.days_left 
   end
+  
+  #Example of good whitelisting
+  # def update
+  #   user = User.find(params[:id])
+  #   user.update_attributes user_params
+  # end
+
+  # private
+  # def user_params
+  #   params[:user].slice :first_name, :last_name, :email
+  # end 
+  
 
   def edit
     @item = Item.find(params[:id])
   end
   
   def update
+    @item = Item.find(params[:id])
+    
     if @item.update_attributes(item_params)
       flash[:notice] = "Item was updated."
        redirect_to item_path
