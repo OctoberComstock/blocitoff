@@ -47,7 +47,6 @@ class ItemsController < ApplicationController
   
   def update
     @item = Item.find(params[:id])
-    
     if @item.update_attributes(item_params)
       flash[:notice] = "Item was updated."
        redirect_to item_path
@@ -74,7 +73,7 @@ class ItemsController < ApplicationController
 
   
   def item_params
-    params.require(:item).permit(:name, :user)
+    params.require(:item).permit(:name, :user, :description)
   end
   
   def find_item
