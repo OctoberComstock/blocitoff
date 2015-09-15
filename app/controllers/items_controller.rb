@@ -57,9 +57,16 @@ class ItemsController < ApplicationController
   end
   
   def destroy
-    @item.destroy
+    if @item.days_left == 0
+       @item.destroy
+    end
+    
+     @item.destroy
+    
     redirect_to items_path
   end
+  
+ 
   
   def completed
     @item = Item.find(params[:id])
@@ -69,7 +76,6 @@ class ItemsController < ApplicationController
   
   private
   
-  # authorize @item
 
   
   def item_params
