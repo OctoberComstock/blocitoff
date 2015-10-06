@@ -4,7 +4,7 @@
 
 
 >
-#####What does it do?
+####What does it do?
 >
 It keeps your priorities in check by getting rid of unnecessary items.
 >
