@@ -18,8 +18,7 @@ It keeps your priorities in check by getting rid of unnecessary items.
 ####Notable Gems:
 * Devise
 * Figaro
-* SQL 3
-* Postgres
+
 
 
 
